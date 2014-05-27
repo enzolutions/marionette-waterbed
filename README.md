@@ -20,7 +20,7 @@ This implementation use the project <a target="_blank" href="http://enzolutions.
 
 **DEMO** : <a target="_blank" href="http://enzolutions.com/marionette-waterbed/">http://enzolutions.com/marionette-waterbed/</a>
 
-![Marionette Waterbed](https://raw.githubusercontent.com/enzolutions/marionette-timeline/master/images/marionettejs_date_range_filter.png "Marionette Waterbed")
+![Marionette Waterbed](https://raw.githubusercontent.com/enzolutions/marionette-waterbed/master/images/marionettejs-waterbed.jpg "Marionette Waterbed")
 
 ## Features
 
