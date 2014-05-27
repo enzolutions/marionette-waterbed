@@ -31,7 +31,7 @@ This implementation use the project <a target="_blank" href="http://enzolutions.
 
 ### Installation
 
-You must configure what is your Rest Server End Point, this definition must be located in file *js/main.js*. Check the following example
+After doownload you must configure what is your Rest Server End Point, this definition must be located in file *js/main.js*. Check the following example
 
 ````
 // Setup Drupal API Information
