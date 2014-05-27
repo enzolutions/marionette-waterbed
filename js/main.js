@@ -123,7 +123,7 @@ require( ["marionette",
     var Auth = new Backbone.Drupal.Auth({crossDomain: true});
 
     // Star authentication process, if credentials are valida the token will be
-    // use in further conection
+    // use in further connection
     var auth_status = Auth.login('admin', 'admin');
 
 

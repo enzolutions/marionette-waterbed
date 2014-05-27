@@ -1,56 +1,53 @@
-Marionette Timeline
+Marionette Waterbed
 =======================
 
-Implementation of a Timeline enabled to end user change the Date Range of Timeline to get differnt results via Ajax.
+Mini Clone of AirBNB.com using MarionetteJS as Front End and Drupal as Rest Backend.
 
-This example use the project <a target="_blank" href="http://enzolutions.com/projects/silex_rss_importer_image" taget="_blank" >enzolutions.com</a> as Rest Server.
-
-The data develired by Rest Server is list of Time Magazine Close Up images imported from <a href="_blank" href="http://lightbox.time.com/category/closeup/feed/">http://lightbox.time.com/category/closeup/feed/</a> you can check the data at <a target_"_blank" href="http://silex.7sabores.com/timeline/index.php/rest/covers">http://silex.7sabores.com/timeline/index.php/rest/covers</a>.
-
-Inside you can find how bind jQuery events with BackboneJS Routes.
-
-Libraries used.
-
-* <a target="_blank" href="http://marionettejs.com">MarionetteJS</a>
-* <a target="_blank" href="http://backbonejs.org">BackboneJS</a>
-* <a target="_blank" href="">jQRangeSlider</a>
-* <a target="_blank" href="http://adomas.org/javascript-mouse-wheel/">javascript-mouse-wheel</a>
+This implementation use the project <a target="_blank" href="http://enzolutions.com/projects/waterbed_rooms/" taget="_blank" >http://enzolutions.com/projects/waterbed_rooms/</a> as Rest Server.
 
 
-**DEMO** : <a target="_blank" href="http://enzolutions.com/marionette-timeline/">http://enzolutions.com/marionette-timeline/</a>
+## Libraries used.
 
-![Marionnete Timeline](https://raw.githubusercontent.com/enzolutions/marionette-timeline/master/images/marionettejs_date_range_filter.png "Marionnete Timeline")
+* <a target="_blank" href="http://marionettejs.com">MarionetteJS</a>.
+* <a target="_blank" href="http://backbonejs.org">BackboneJS</a>.
+* <a target="_blank" href="http://underscorejs.org">UnderscoreJS</a>.
+* <a target="_blank" href="https://github.com/enzolutions/backbone.drupal"> Backbone Drupal</a>.
+* <a target="_blank" href="http://epeli.github.io/underscore.string/">Underscore.string</a>.
+* <a target="_blank" href="http://ghusse.github.io/jQRangeSlider/">jQRangeSlider</a>.
+* <a target="_blank" href="http://www.basic-slider.com/">Basic Query Slider</a>.
+* <a target="_blank" href="https://github.com/yckart/jquery.storage.js">jquery.storage.js</a>.
+* <a target="_blank" href="https://code.google.com/p/jquery-ui-map/">jquery-ui-map</a>.
 
-### Usage
+**DEMO** : <a target="_blank" href="http://enzolutions.com/marionette-waterbed/">http://enzolutions.com/marionette-waterbed/</a>
 
-You just need to play with Date Range select to get less or more results as you can see in the picture above.
+![Marionette Waterbed](https://raw.githubusercontent.com/enzolutions/marionette-timeline/master/images/marionettejs_date_range_filter.png "Marionette Waterbed")
 
-#### Installing Rest Server
+## Features
 
-You must follow the instructions to install Rest Server <a target="_blank" href="http://enzolutions.com/projects/silex_rss_importer_image" taget="_blank" >enzolutions.com</a> or you can implement your own Server to delivery diferent data.
+* Enable Filtering by Date Range
+* Enable Filtering by Price Range
+* Display Results and Position in Google Map
+* Option to see details of property.
 
+### Installation
 
-#### Configuring Collections
-
-Is required edit ResultCollection to set the proper URL for Rest Server as you can see in the following example.
+You must configure what is your Rest Server End Point, this definition must be located in file *js/main.js*. Check the following example
 
 ````
-define(["marionette",
-        "../models/ResultModel"], function(Marionette, Result ) {
+// Setup Drupal API Information
+Backbone.Drupal.restEndpoint = {
+  root: 'http://waterbed-backend.com/api',
+  dataType: '.json'
+};
+````
 
-    var Results = Backbone.Collection.extend({
-       model: Result,
-       initialize : function(options) {
-          this.min = options.min;
-          this.max = options.max;
-       },
-       url: function() {
-         return 'http://silex.7sabores.com/timeline/index.php/rest/covers' + this.min + '/' + this.max;
-       },
-    });
+If you want to use Waterbed outside the domain of your Backend Server, you must enable CORS in your Rest Server and enable Authentication using *Backbone Drupal*. See the following example.
 
-    return Results;
+````
+// Define auth object, set crossDomain if is necessary
+var Auth = new Backbone.Drupal.Auth({crossDomain: true});
 
-});
-
+// Star authentication process, if credentials are valida the token will be
+// use in further connection
+var auth_status = Auth.login('admin', 'admin');
 ````
