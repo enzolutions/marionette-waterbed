@@ -122,12 +122,10 @@ require( ["marionette",
     // Define auth object, set crossDomain if is necessary
     var Auth = new Backbone.Drupal.Auth({crossDomain: true});
 
-    // Star authentication process, if credentials are valida the token will be
-    // use in further connection
-    var auth_status = Auth.login('admin', 'admin');
-
-
-    if(auth_status) {
+    // Optional Start authentication process for REST ADD/PUT/DELETE
+    // if credentials are valid the token will be use in further connection
+    //var auth_status = Auth.login('user', 'admin');
+    //if(auth_status) {
 
       // Initialize the app controller
       // Pass reference to Main Region to Controller
@@ -219,11 +217,12 @@ require( ["marionette",
     });
 
     MyApp.start({});
-  } else {
+  // Optional process Auth error
+  /*} else {
     // Generating error message
     accessDeniendView = new AccessDeniedView({ message: 'Authentication fail'});
 
     // Add Header View to region to be render
     MyApp.propertyRegion.show(accessDeniendView);
-  }
+  }*/
 });
