@@ -47,7 +47,7 @@ If you want to use Waterbed outside the domain of your Backend Server, you must 
 // Define auth object, set crossDomain if is necessary
 var Auth = new Backbone.Drupal.Auth({crossDomain: true});
 
-// Star authentication process, if credentials are valida the token will be
-// use in further connection
+// Optional Start authentication process for REST ADD/PUT/DELETE
+// If credentials are valid the token will be use in further connection
 var auth_status = Auth.login('admin', 'admin');
 ````
